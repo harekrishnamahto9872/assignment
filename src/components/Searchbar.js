@@ -5,10 +5,11 @@ import MapContainer from './MapContainer'
 class Searchbar extends Component{
     state = {
         states:[
+            {"code": "NA", "name":"select state"},
             {"code": "AN","name": "Andaman & Nicobar Islands"},
             {"code": "AP","name": "Andhra Pradesh"},
             {"code": "AR","name": "Arunachal Pradesh"},
-            {"code": "AS","name": "Assam"},
+            {"code": "AS","name": "Assam"},  
             {"code": "BR","name": "Bihar"},
             {"code": "CG","name": "Chandigarh"},
             {"code": "CH","name": "Chhattisgarh"},
@@ -42,7 +43,8 @@ class Searchbar extends Component{
             {"code": "UP","name": "Uttar Pradesh"},
             {"code": "WB","name": "West Bengal"}
         ],
-        cities : []
+        cities : [],
+        selectedState : 'Gujarat'
     }
     componentDidMount()
     {
@@ -50,6 +52,9 @@ class Searchbar extends Component{
        
     }
     handleChange = (e) =>{
+        this.setState({
+            selectedState : e.target.value
+        })
         axios.get(`https://indian-cities-api-nocbegfhqg.now.sh/cities?State=${e.target.value}`)
         .then(res=>{
             console.log(res.data)
@@ -84,7 +89,7 @@ class Searchbar extends Component{
                     </select>
                 </div>
                 <div>
-                    <MapContainer />
+                    <MapContainer cities={this.state.cities} selectedState={this.state.selectedState} />
                 </div>
             </div>
         )
