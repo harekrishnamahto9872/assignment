@@ -42,23 +42,23 @@ class MapContainer extends Component {
          }
       })
 
-    for(var i=0;i<this.props.cities.length%20;i++)
-    {
-      axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${this.props.cities[i].City}&key=AIzaSyAUdQnLlhEULAQ9DQhUZrEDeZZR28Z5FGs`)
-    .then(res=>{
-      console.log("city res", this.state.points)
+    // for(var i=0;i<this.props.cities.length%20;i++)
+    // {
+    //   axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${this.props.cities[i].City}&key=AIzaSyAUdQnLlhEULAQ9DQhUZrEDeZZR28Z5FGs`)
+    // .then(res=>{
+    //   console.log("city res", this.state.points)
 
-      let point =  {
-      name: this.props.cities[i].City,
-      lat: res.data.results[0].geometry.location.lat,
-      lng: res.data.results[0].geometry.location.lng
-      }
-      this.setState({
-        points : [...this.state.points,point]
-      }) 
+    //   let point =  {
+    //   name: this.props.cities[i].City,
+    //   lat: res.data.results[0].geometry.location.lat,
+    //   lng: res.data.results[0].geometry.location.lng
+    //   }
+    //   this.setState({
+    //     points : [...this.state.points,point]
+    //   }) 
                       
-    })
-    }
+    // })
+    // }
     })
 
     
